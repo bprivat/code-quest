@@ -56,10 +56,13 @@ Code Quest
  * Launch pyglet window via command line
  * args
      * parser to use
-          * First, look for arg in codequest.parser module
+          * First, look for arg in codequest.parser module and try to import with importlib
           * If not found, attempt to execute it, passing the source file as an argument
           * Support any executable that takes a source file as a parameter and returns a dungeon XML file
+          * If not specified, infer by source file type, throw error if no built-in parser to handle it
      * source file to parse (generate dungeon from)
+     * OR, just a pre-built xml file (Will still need to go through verification)
+          * This way, one doesn't have to distribute one's source in order for others to play their dungeon
 6. Future Features
  * Persistent high scores
      * What's best? SQLite? Pickle? Something else?
