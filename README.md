@@ -6,18 +6,15 @@ Code Quest
  * What's the goal?
      * Get to the end of the dungeon with the highest score
 	 * Score determined by time and enemies defeated
-	 * high scores stored per file (md5 checksum to identify file content)
  * What does a player do in each room?
-     * Get to next room
-	 * Defeat enemies
+     * Get to next room by
+	 * defeating enemies
+	 * finding switch/key to unlock door
 	 * TODO
  * What room elements are controlled by source parsing?
      * Enemy type and number
-	 * Room connections
-	 * Room type
-	      * Defeat all enemies to pass
-		  * Find switch
-		  * TODO
+     * Room connections
+     * Room type (goal to continue)
      * TODO
 2. XML Design
  * Research designing custom XML schema
@@ -27,8 +24,16 @@ Code Quest
  * Dungeon Design
      * single dungeon tag containing rooms
      * How to connect/relate rooms?
+          * Optional N,S,E,W tags containing room IDs?
      * What attributes will rooms need?
+          * Unique ID
+          * Enemies element describes enemy groups
+          * Goal element describes room goal (defeat enemies, unlock, etc)
      * What attributes will the dungeon need as a whole?
+          * Starting and ending room IDs
+          * sha1 of source content
+               * Collision free, so should be able to uniquely identify different sources
+               * Can be used as key for high score later
 3. Python parsing adapter
  * Make abstract enough that any adapter that produces dungeon XML can be used
  * For now, handle only single source files
@@ -44,5 +49,19 @@ Code Quest
  * Engine
      * Pyglet
  * Dungeon Interpreter
+     * Validate given xml via xsd file
      * Given dungeon XML, convert to Dungeon object
      * Serialize straight into Dungeon object possible?
+5. Execution
+ * Launch pyglet window via command line
+ * args
+     * parser to use
+          * First, look for arg in codequest.parser module
+          * If not found, attempt to execute it, passing the source file as an argument
+          * Support any executable that takes a source file as a parameter and returns a dungeon XML file
+     * source file to parse (generate dungeon from)
+6. Future Features
+ * Persistent high scores
+     * What's best? SQLite? Pickle? Something else?
+ * Different player character depending on source type
+ * Select source code from GUI, get preview stats
