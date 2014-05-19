@@ -1,20 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema targetNamespace="http://www.w3schools.com/CodeQuest"
-    elementFormDefault="qualified"
-    xmlns="http://www.w3schools.com/CodeQuest dungeon.xsd"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <xs:element name="dungeon">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="room">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="id" type="xs:integer"/>
-							<xs:element name="name" type="xs:string"/>
-						</xs:sequence>
-					</xs:complexType>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:complexType name="enemytype">
+	<xs:sequence>
+		<xs:element name="id" type="xs:integer"/>
+	</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="enemiestype">
+	<xs:sequence>
+		<xs:element name="enemy" type="enemytype" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+	
+<xs:complexType name="roomtype">
+	<xs:sequence>
+		<xs:element name="id" type="xs:integer"/>
+		<xs:element name="goal" type="xs:integer"/>
+		<xs:element name="north" type="xs:integer" minOccurs="0"/>
+		<xs:element name="south" type="xs:integer" minOccurs="0"/>
+		<xs:element name="east" type="xs:integer" minOccurs="0"/>
+		<xs:element name="west" type="xs:integer" minOccurs="0"/>
+		<xs:element name="enemies" type="enemiestype"/>
+	</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dungeontype">
+	<xs:sequence>
+		<xs:element name="hash" type="xs:string"/>
+		<xs:element name="start" type="xs:integer"/>
+		<xs:element name="end" type="xs:integer"/>
+		<xs:element name="room" type="roomtype" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+
+
+<xs:element name="dungeon" type="dungeontype"/>
+	
 </xs:schema>
