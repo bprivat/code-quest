@@ -55,14 +55,15 @@ Code Quest
 5. Execution
  * Launch pyglet window via command line
  * args
-     * parser to use
-          * First, look for arg in codequest.parser module and try to import with importlib
-          * If not found, attempt to execute it, passing the source file as an argument
-          * Support any executable that takes a source file as a parameter and returns a dungeon XML file
-          * If not specified, infer by source file type, throw error if no built-in parser to handle it
-     * source file to parse (generate dungeon from)
-     * OR, just a pre-built xml file (Will still need to go through verification)
-          * This way, one doesn't have to distribute one's source in order for others to play their dungeon
+     * Source file
+          * Load all possible Parser subclasses in codequest.parser and check their file_types() list with the given file
+          * If an xml file, pass this file straight to the interpreter
+          * Otherwise, let the found Parser subclass parse the file
+          * If no applicable Parser subclass found, throw error
+     * Command
+          * Would be nice to allow a user to supply any command that, given a file as an argument, returns the dungeon xml
+          * Arbitrarily running a command is too dangerous, though...
+          * For now, Parsers will need to be written in Python
 6. Future Features
  * Persistent high scores
      * What's best? SQLite? Pickle? Something else?
