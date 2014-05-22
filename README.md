@@ -35,16 +35,14 @@ Code Quest
                * Collision free, so should be able to uniquely identify different sources
                * Can be used as key for high score later
 3. Python parsing adapter
- * Make abstract enough that any adapter that produces dungeon XML can be used
+ * Make abstract enough that any CQParser subclass can be used
  * For now, handle only single source files
- * Choose Python XML module: [built-in possibilities](https://docs.python.org/2/library/xml.html#module-xml)
-     * [lxml](http://lxml.de/) supports xsd validation, so use this
+ * Choose Python XML module: [lxml](http://lxml.de/) supports xsd validation, so use this
  * Use [ast module](https://docs.python.org/3.3/library/ast.html) to generate tree from source
  * Parse converted source into dungeon XML
      * Create Dungeon/Room objects, then serialize into XML?
      * Create straight into XML and deserialize into objects later?
  * Research possibilities of malicious XML generation
-     * [info for built-in xml module](https://docs.python.org/2/library/xml.html#xml-vulnerabilities)
 4. Game Side
  * Engine
      * Pyglet
@@ -54,16 +52,7 @@ Code Quest
      * Serialize straight into Dungeon object possible?
 5. Execution
  * Launch pyglet window via command line
- * args
-     * Source file
-          * Load all possible Parser subclasses in codequest.parser and check their file_types() list with the given file
-          * If an xml file, pass this file straight to the interpreter
-          * Otherwise, let the found Parser subclass parse the file
-          * If no applicable Parser subclass found, throw error
-     * Command
-          * Would be nice to allow a user to supply any command that, given a file as an argument, returns the dungeon xml
-          * Arbitrarily running a command is too dangerous, though...
-          * For now, Parsers will need to be written in Python
+ * ~~args~~
 6. Future Features
  * Persistent high scores
      * What's best? SQLite? Pickle? Something else?

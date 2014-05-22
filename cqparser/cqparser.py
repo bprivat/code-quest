@@ -1,8 +1,6 @@
-__all__ = ['pythonparser']
+from abc import ABCMeta
 
-import abc
-
-class Parser(metaclass=abc.ABCMeta):
+class CQParser(metaclass=ABCMeta):
     @staticmethod
     @abc.abstractmethod
     def file_types():

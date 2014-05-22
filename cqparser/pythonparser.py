@@ -1,7 +1,8 @@
 import ast
-from . import Parser
 
-class PythonParser(Parser):
+from .cqparser import CQParser
+
+class PythonParser(CQParser):
     @classmethod
     def file_types(cls):
         return ['.py', '.py3']
@@ -10,3 +11,5 @@ class PythonParser(Parser):
         content = self.getFileContent(filename)
         
         return ast.parse(content, filename)
+        
+CQParser.register(PythonParser)
