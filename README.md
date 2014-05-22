@@ -20,6 +20,7 @@ Code Quest
  * Research designing custom XML schema
      * Create an .xsd file, which describes the schema
 	 * can validate with [lxml](http://lxml.de/validation.html#xmlschema)
+	 * Create a validator script, so people can easily verify their xml
  * Research best practices
  * Dungeon Design
      * single dungeon tag containing rooms
