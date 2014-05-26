@@ -7,9 +7,12 @@ class PythonParser(CQParser):
     def file_types(cls):
         return ['.py', '.py3']
         
-    def parse(self, filename):
+    def parse_to_xml(self, filename):
         content = self.getFileContent(filename)
         
         return ast.parse(content, filename)
+        
+    def parse_to_string(self, filename):
+        pass
         
 CQParser.register(PythonParser)

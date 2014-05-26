@@ -7,12 +7,6 @@
 		<xs:element name="id" type="xs:integer"/>
 	</xs:sequence>
 </xs:complexType>
-
-<xs:complexType name="enemiestype">
-	<xs:sequence>
-		<xs:element name="enemy" type="enemytype" maxOccurs="unbounded"/>
-	</xs:sequence>
-</xs:complexType>
 	
 <xs:complexType name="roomtype">
 	<xs:sequence>
@@ -22,7 +16,7 @@
 		<xs:element name="south" type="xs:integer" minOccurs="0"/>
 		<xs:element name="east" type="xs:integer" minOccurs="0"/>
 		<xs:element name="west" type="xs:integer" minOccurs="0"/>
-		<xs:element name="enemies" type="enemiestype"/>
+		<xs:element name="enemy" type="enemytype" maxOccurs="unbounded"/>
 	</xs:sequence>
 </xs:complexType>
 

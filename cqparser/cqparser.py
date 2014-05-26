@@ -1,6 +1,6 @@
-from abc import ABCMeta
+import abc
 
-class CQParser(metaclass=ABCMeta):
+class CQParser(metaclass=abc.ABCMeta):
     @staticmethod
     @abc.abstractmethod
     def file_types():
@@ -8,12 +8,17 @@ class CQParser(metaclass=ABCMeta):
         return []
     
     @staticmethod    
-    def getFileContent(filename):
+    def get_file_content(filename):
         '''Given a file name, return the contents of the file as a single string'''
         with open(filename) as f:
             return '\n'.join(f.readlines())
         
     @abc.abstractmethod
-    def parse(self, filename):
+    def parse_to_xml(self, filename):
         '''Given a file name, parse it and return an XML document as a string'''
+        pass
+        
+    @abc.abstractmethod
+    def parse_to_string(self, filename):
+        '''Given a file name, parse it and return an XML document as an lxml object'''
         pass
