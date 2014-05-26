@@ -32,7 +32,8 @@ def _parse_for_play(file):
         print("No parsers found for {} files.".format(ext))
     elif len(parsers) == 1:
         print("Parsing {} file with {}...".format(ext, parsers[0].__name__))
-        _play(parsers[0].get_file_content(file))
+        parser = parsers[0](file)
+        _play(parser.parse_to_xml())
     else:
         print("Multiple parsers found:\n" + '\n'.join(p.__name__ for p in parsers))
 
