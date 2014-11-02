@@ -2,12 +2,13 @@ import ast
 
 from .cqparser import CQParser
 
+
 class PythonParser(CQParser):
     def __init__(self, filename):
         super().__init__(filename)
 
-    @classmethod
-    def file_types(cls):
+    @staticmethod
+    def file_types():
         return ['.py', '.py3']
         
     def parse_to_xml(self):

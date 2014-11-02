@@ -1,19 +1,20 @@
 class Dungeon:
     
-    def __init__(self, hash, start, end, rooms):
-        self.hash = hash
+    def __init__(self, _hash, start, end, rooms):
+        self.hash = _hash
         self.start = start
         self.end = end
         self.rooms = rooms
 
-    @classmethod
-    def from_xml(cls, xml):
-        return cls('xml', 0, 0, [])
+    @staticmethod
+    def from_xml(xml):
+        return Dungeon('xml', 0, 0, [])
+
 
 class Room:
     
-    def __init__(self, id, goal, north, south, east, west, enemies):
-        self.id = id
+    def __init__(self, _id, goal, north, south, east, west, enemies):
+        self.id = _id
         self.goal = goal
         self.north = north
         self.south = south

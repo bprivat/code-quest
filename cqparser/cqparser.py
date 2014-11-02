@@ -1,5 +1,6 @@
 import abc
 
+
 class CQParser(metaclass=abc.ABCMeta):
     def __init__(self, filename):
         self.set_file(filename)
